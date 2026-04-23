@@ -14,17 +14,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    revealElements.forEach(el => observer.observe(el));
+    revealElements.forEach((el, index) => {
+        // Add staggered delay for mobile specifically if they are cards or portfolio items
+        if (window.innerWidth < 768) {
+            const parent = el.closest('.service-interactive-grid, .compact-portfolio');
+            if (parent) {
+                const children = Array.from(parent.querySelectorAll('.reveal'));
+                const childIndex = children.indexOf(el);
+                el.style.transitionDelay = `${childIndex * 0.15}s`;
+            }
+        }
+        observer.observe(el);
+    });
 
     // Mouse-Move Parallax for Background Geometric Elements
     const bgElements = document.querySelector('.geometric-elements');
     const shapes = document.querySelectorAll('.shape, .line-element');
 
     document.addEventListener('mousemove', (e) => {
+        if (window.innerWidth < 768) return; // Disable parallax on mobile
+        
         const mouseX = e.clientX;
         const mouseY = e.clientY;
 
-        // Calculate offset based on screen center
         const centerX = window.innerWidth / 2;
         const centerY = window.innerHeight / 2;
 
@@ -32,11 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const moveY = (mouseY - centerY) / 50;
 
         shapes.forEach((shape, index) => {
-            const depth = (index + 1) * 0.5; // Different depth for each shape
+            const depth = (index + 1) * 0.5;
             const x = moveX * depth;
             const y = moveY * depth;
-            
-            // We preserve original rotation if any (simplified here)
             shape.style.transform = `translate(${x}px, ${y}px)`;
         });
     });
@@ -44,6 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Interactive Expandable Cards Logic
     const cards = document.querySelectorAll('.expandable-card');
     cards.forEach(card => {
+        // Touch Pulse Effect
+        card.addEventListener('touchstart', () => {
+            card.classList.add('pulse-touch');
+            setTimeout(() => card.classList.remove('pulse-touch'), 600);
+        }, { passive: true });
+
         card.addEventListener('click', (e) => {
             if (card.classList.contains('active')) {
                 if (e.target.closest('.close-card')) {
@@ -71,9 +87,16 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            
+            // Close mobile menu if open
+            if (mobileNav.classList.contains('active')) {
+                toggleMobileMenu();
+            }
+
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
             if (target) {
-                const headerOffset = 100;
+                const headerOffset = 80;
                 const elementPosition = target.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                 window.scrollTo({
@@ -83,4 +106,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Mobile Menu Logic
+    const mobileBtn = document.querySelector('.mobile-menu-toggle');
+    const mobileNav = document.querySelector('.mobile-nav-overlay');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-links li');
+
+    const toggleMobileMenu = () => {
+        mobileNav.classList.toggle('active');
+        const isOpen = mobileNav.classList.contains('active');
+        mobileBtn.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+
+        if (isOpen) {
+            mobileLinks.forEach((link, index) => {
+                link.style.transitionDelay = `${0.2 + index * 0.1}s`;
+            });
+        }
+    };
+
+    mobileBtn.addEventListener('click', toggleMobileMenu);
 });

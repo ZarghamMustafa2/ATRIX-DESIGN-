@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body class="liquid-scroll">
     <!-- Enhanced Architectural Background Layers -->
     <div id="bg-canvas">
         <div class="blueprint-grid"></div>
@@ -36,8 +36,21 @@
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Consultation</a></li>
             </ul>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay">
+        <ul class="mobile-nav-links">
+            <li><a href="#hero">Legacy</a></li>
+            <li><a href="#services">Expertise</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Consultation</a></li>
+        </ul>
+    </div>
 
     <section id="hero">
         <div class="container hero-container centered">
@@ -167,6 +180,10 @@
             </div>
         </div>
     </footer>
+
+    <a href="tel:+923066097000" id="fab-call">
+        <i class="fas fa-phone-alt"></i>
+    </a>
 
     <script src="script.js"></script>
 </body>
