@@ -53,13 +53,13 @@ body {
 
 .logo { display: flex; align-items: center; }
 .main-logo {
-    height: 70px;
+    height: 80px;
     width: auto;
     object-fit: contain;
     transition: var(--transition);
     image-rendering: -webkit-optimize-contrast;
-    mix-blend-mode: lighten;
-    margin: -10px 0;
+    mix-blend-mode: screen;
+    margin: -15px 0;
 }
 
 .nav-links { display: flex; list-style: none; gap: 2.5rem; }
@@ -380,6 +380,7 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .main-logo { height: 80px; margin: -10px 0; }
     #hero { padding-top: 80px; text-align: center; justify-content: center; }
     .hero-container { text-align: center; }
     .hero-overlay { background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.9) 100%); }
