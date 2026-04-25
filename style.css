@@ -322,6 +322,31 @@ section { padding: 120px 0; position: relative; z-index: 1; }
     letter-spacing: 1px;
 }
 
+/* Partners Section */
+.partners-grid { display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 2rem; }
+.partner-logo { font-size: 3rem; color: #333; transition: var(--transition); }
+.partner-logo:hover { color: var(--gray); transform: translateY(-5px); }
+
+/* Stats Section */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; text-align: center; }
+.stat-number { font-size: 4rem; font-weight: 800; color: var(--gold); line-height: 1; margin-bottom: 0.5rem; }
+.stat-label { color: var(--white); font-size: 1.1rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+
+/* Process Section */
+.process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; position: relative; }
+.process-step { background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent); padding: 3rem 2rem; border-radius: 1.5rem; border: 1px solid rgba(255,255,255,0.1); position: relative; text-align: center; }
+.step-number { font-size: 5rem; font-weight: 800; color: rgba(250, 200, 21, 0.1); position: absolute; top: -10px; right: 20px; line-height: 1; z-index: 0; }
+.process-step h3 { font-size: 1.5rem; color: var(--gold); margin-bottom: 1rem; position: relative; z-index: 1; }
+.process-step p { color: var(--gray); position: relative; z-index: 1; }
+
+/* Testimonials */
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; }
+.testimonial-card { padding: 3rem; }
+.stars { color: var(--gold); margin-bottom: 1.5rem; font-size: 1.2rem; }
+.review { font-size: 1.1rem; font-style: italic; color: var(--white); margin-bottom: 2rem; line-height: 1.8; }
+.client-info h4 { font-size: 1.2rem; color: var(--gold); margin-bottom: 0.2rem; }
+.client-info p { color: var(--gray); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
 /* FAQ / Contact Section */
 .faq-accordion { max-width: 800px; margin: 0 auto 5rem; }
 .faq-item { 

@@ -124,6 +124,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Statistics Counter Animation
+    const counters = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                const endValue = parseInt(target.getAttribute('data-target'));
+                const duration = 2000; // 2 seconds
+                const frameRate = 1000 / 60;
+                const totalFrames = Math.round(duration / frameRate);
+                let currentFrame = 0;
+                
+                const easeOutQuad = t => t * (2 - t);
+                
+                const counterInterval = setInterval(() => {
+                    currentFrame++;
+                    const progress = easeOutQuad(currentFrame / totalFrames);
+                    const currentCount = Math.round(endValue * progress);
+                    
+                    target.innerText = currentCount;
+                    
+                    if (currentFrame === totalFrames) {
+                        clearInterval(counterInterval);
+                        target.innerText = endValue;
+                    }
+                }, frameRate);
+                
+                observer.unobserve(target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(counter => counterObserver.observe(counter));
+
     if(mobileBtn) {
         mobileBtn.addEventListener('click', toggleMobileMenu);
     }
