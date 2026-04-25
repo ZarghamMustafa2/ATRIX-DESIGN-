@@ -1,92 +1,85 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Intersection Observer for Reveal Animations
+    
+    // Navbar Scroll Effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Staggered Slide-up Animations (Intersection Observer)
     const observerOptions = {
         threshold: 0.1,
         rootMargin: "0px 0px -50px 0px"
     };
 
-    const revealElements = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
+                // Optional: Stop observing after it animates once
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
+    const revealElements = document.querySelectorAll('.reveal-up');
+    
+    // Apply staggered delays based on horizontal position or index if in a grid
     revealElements.forEach((el, index) => {
-        // Add staggered delay for mobile specifically if they are cards or portfolio items
-        if (window.innerWidth < 768) {
-            const parent = el.closest('.service-interactive-grid, .compact-portfolio');
-            if (parent) {
-                const children = Array.from(parent.querySelectorAll('.reveal'));
-                const childIndex = children.indexOf(el);
-                el.style.transitionDelay = `${childIndex * 0.15}s`;
-            }
+        const parentGrid = el.closest('.features-grid, .gallery-grid, .about-grid');
+        if (parentGrid) {
+            const siblings = Array.from(parentGrid.querySelectorAll('.reveal-up'));
+            const siblingIndex = siblings.indexOf(el);
+            // Limit delay so it doesn't take forever
+            const delay = Math.min(siblingIndex * 0.15, 0.6); 
+            el.style.transitionDelay = `${delay}s`;
         }
         observer.observe(el);
     });
 
-    // Mouse-Move Parallax for Ambient Orbs
-    const orbs = document.querySelectorAll('.ambient-orb');
+    // Hero Parallax Effect
+    const heroBg = document.getElementById('heroBg');
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.pageYOffset;
+        if (heroBg && scrollPosition < window.innerHeight) {
+            // Move the background down slightly as we scroll down
+            heroBg.style.transform = `translateY(${scrollPosition * 0.4}px)`;
+        }
+    });
 
-    document.addEventListener('mousemove', (e) => {
-        if (window.innerWidth < 768) return; // Disable parallax on mobile
-        
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
+    // FAQ Accordion Logic
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const title = item.querySelector('h4');
+        const content = item.querySelector('p');
+        const icon = item.querySelector('i');
 
-        const centerX = window.innerWidth / 2;
-        const centerY = window.innerHeight / 2;
-
-        // More subtle movement for the large orbs
-        const moveX = (mouseX - centerX) / 80;
-        const moveY = (mouseY - centerY) / 80;
-
-        orbs.forEach((orb, index) => {
-            const depth = (index + 1) * 0.8;
-            const x = moveX * depth;
-            const y = moveY * depth;
+        title.addEventListener('click', () => {
+            const isOpen = content.style.display === 'block';
             
-            // Note: We're adding to the translation, but CSS animations might override this if they don't use variables.
-            // Let's use CSS variables for parallax so they combine with the float animation.
-            orb.style.transform = `translate(${x}px, ${y}px)`;
-        });
-    });
+            // Close all other FAQs
+            faqItems.forEach(otherItem => {
+                otherItem.querySelector('p').style.display = 'none';
+                otherItem.querySelector('i').style.transform = 'rotate(0deg)';
+                otherItem.querySelector('h4').style.color = '';
+            });
 
-    // Interactive Expandable Cards Logic
-    const cards = document.querySelectorAll('.expandable-card');
-    cards.forEach(card => {
-        // Touch Pulse Effect
-        card.addEventListener('touchstart', () => {
-            card.classList.add('pulse-touch');
-            setTimeout(() => card.classList.remove('pulse-touch'), 600);
-        }, { passive: true });
-
-        card.addEventListener('click', (e) => {
-            if (card.classList.contains('active')) {
-                if (e.target.closest('.close-card')) {
-                    card.classList.remove('active');
-                }
-                return;
+            // Toggle current FAQ
+            if (!isOpen) {
+                content.style.display = 'block';
+                icon.style.transform = 'rotate(180deg)';
+                icon.style.transition = 'transform 0.3s ease';
+                title.style.color = 'var(--gold)';
             }
-            cards.forEach(c => c.classList.remove('active'));
-            card.classList.add('active');
-            setTimeout(() => {
-                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 300);
-        });
-    });
-
-    document.querySelectorAll('.close-card').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const card = btn.closest('.expandable-card');
-            card.classList.remove('active');
         });
     });
 
     // Smooth Scroll for Nav Links
+    const mobileNav = document.querySelector('.mobile-nav-overlay');
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -97,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const targetId = this.getAttribute('href');
+            if(targetId === '#') return;
             const target = document.querySelector(targetId);
             if (target) {
                 const headerOffset = 80;
@@ -112,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile Menu Logic
     const mobileBtn = document.querySelector('.mobile-menu-toggle');
-    const mobileNav = document.querySelector('.mobile-nav-overlay');
     const mobileLinks = document.querySelectorAll('.mobile-nav-links li');
 
     const toggleMobileMenu = () => {
@@ -123,10 +116,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (isOpen) {
             mobileLinks.forEach((link, index) => {
-                link.style.transitionDelay = `${0.2 + index * 0.1}s`;
+                link.classList.remove('active'); // Reset
+                setTimeout(() => {
+                    link.classList.add('active');
+                }, 100 + (index * 100));
             });
         }
     };
 
-    mobileBtn.addEventListener('click', toggleMobileMenu);
+    if(mobileBtn) {
+        mobileBtn.addEventListener('click', toggleMobileMenu);
+    }
 });

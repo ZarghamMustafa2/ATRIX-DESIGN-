@@ -3,36 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atrix Design & Build | Luxury Architecture & Construction</title>
+    <title>Atrix Design & Build | Luxury Architecture</title>
     <meta name="description" content="Atrix Design & Build Pvt. Ltd. - Advanced Architectural Design and Elite Construction Services.">
-    <link rel="stylesheet" href="style.css?v=2.0">
+    <link rel="stylesheet" href="style.css?v=3.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="liquid-scroll">
-    <!-- Enhanced Architectural Background Layers -->
-    <div id="bg-canvas">
-        <div class="blueprint-grid"></div>
-        <div class="spotlight-overlay"></div>
-        <div class="ambient-orb orb-1"></div>
-        <div class="ambient-orb orb-2"></div>
-        <div class="ambient-orb orb-3"></div>
-    </div>
+
+    <!-- Subtle Abstract Background for entire page -->
+    <div class="abstract-bg"></div>
 
     <nav id="navbar">
         <div class="container navbar-content">
             <div class="logo">
-                <a href="#hero" class="logo-link">
+                <a href="#hero">
                     <img src="https://i.postimg.cc/N5DprPvY/Arix-Company-Profile-4-1-page-0001-removebg-preview.png" alt="Atrix Design Logo" class="main-logo">
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="#hero">Legacy</a></li>
-                <li><a href="#services">Expertise</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Consultation</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Expertise</a></li>
+                <li><a href="#gallery">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="mobile-menu-toggle">
                 <i class="fas fa-bars"></i>
@@ -43,140 +38,150 @@
     <!-- Mobile Navigation Overlay -->
     <div class="mobile-nav-overlay">
         <ul class="mobile-nav-links">
-            <li><a href="#hero">Legacy</a></li>
-            <li><a href="#services">Expertise</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Consultation</a></li>
+            <li class="reveal-up"><a href="#about">About</a></li>
+            <li class="reveal-up"><a href="#features">Expertise</a></li>
+            <li class="reveal-up"><a href="#gallery">Portfolio</a></li>
+            <li class="reveal-up"><a href="#contact">Contact</a></li>
         </ul>
     </div>
 
     <section id="hero">
-        <div class="container hero-container centered">
-            <h1 class="reveal tracking-wide"><span class="text-gradient">ARCHITECTURAL</span> EXCELLENCE</h1>
-            <p class="reveal delay-1 sub-headline">Where Innovative Design Meets Unparalleled Craftsmanship</p>
-            <p class="reveal delay-2 sub-text">Merging aesthetic elegance with functional excellence</p>
-            <div class="cta-box reveal delay-3">
-                <a href="#portfolio" class="btn btn-animated">Explore Legacy</a>
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-container">
+            <span class="subtitle reveal-up">Atrix Design & Build</span>
+            <h1 class="reveal-up">The Future of <br><span class="text-gold">Architectural Excellence</span></h1>
+            <p class="sub-text reveal-up">Merging aesthetic elegance with functional excellence. We build luxury environments that inspire.</p>
+            <div class="cta-box reveal-up">
+                <a href="#features" class="btn btn-gold">Explore Legacy</a>
             </div>
         </div>
     </section>
 
-    <section id="services">
+    <section id="about">
         <div class="container">
-            <h2 class="section-title centered reveal tracking-wide"><span class="text-gradient">CORE</span> EXPERTISE</h2>
-            <div class="service-interactive-grid">
-                <div class="expandable-card reveal" data-service="architecture">
-                    <div class="card-inner glass">
-                        <button class="close-card"><i class="fas fa-times"></i></button>
-                        <div class="card-summary">
-                            <i class="fas fa-pencil-ruler"></i>
-                            <h3>Architecture Design</h3>
-                        </div>
-                        <div class="card-details">
-                            <p>Creating spaces that are both functional and visually striking, transforming visions into innovative designs.</p>
-                        </div>
-                    </div>
+            <div class="about-grid">
+                <div class="reveal-up">
+                    <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop" alt="Atrix Building" class="about-img">
                 </div>
-                <div class="expandable-card reveal delay-1" data-service="interior">
-                    <div class="card-inner glass">
-                        <button class="close-card"><i class="fas fa-times"></i></button>
-                        <div class="card-summary">
-                            <i class="fas fa-couch"></i>
-                            <h3>Interior Design</h3>
-                        </div>
-                        <div class="card-details">
-                            <p>Crafting environments that reflect personality and lifestyle while ensuring optimal functionality.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="expandable-card reveal delay-2" data-service="construction">
-                    <div class="card-inner glass">
-                        <button class="close-card"><i class="fas fa-times"></i></button>
-                        <div class="card-summary">
-                            <i class="fas fa-hard-hat"></i>
-                            <h3>Construction</h3>
-                        </div>
-                        <div class="card-details">
-                            <p>Managing projects with precision and efficiency, ensuring completion on time, within budget, and to the highest standards.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="expandable-card reveal delay-3" data-service="renovation">
-                    <div class="card-inner glass">
-                        <button class="close-card"><i class="fas fa-times"></i></button>
-                        <div class="card-summary">
-                            <i class="fas fa-tools"></i>
-                            <h3>Renovation</h3>
-                        </div>
-                        <div class="card-details">
-                            <p>Transforming existing spaces by enhancing functionality and aesthetics while respecting the original character.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="expandable-card reveal delay-4" data-service="landscape">
-                    <div class="card-inner glass">
-                        <button class="close-card"><i class="fas fa-times"></i></button>
-                        <div class="card-summary">
-                            <i class="fas fa-leaf"></i>
-                            <h3>Landscape</h3>
-                        </div>
-                        <div class="card-details">
-                            <p>Integrating natural elements with architectural vision to create beautiful, functional, and serene outdoor environments.</p>
-                        </div>
-                    </div>
+                <div class="about-card reveal-up">
+                    <h3>About Atrix Design</h3>
+                    <p class="sub-text" style="margin-bottom: 1rem; color: #ccc;">A masterpiece of modern architecture, Atrix Design redefines luxury living and commercial excellence.</p>
+                    <p style="color: var(--gray); font-size: 0.95rem;">We blend state-of-the-art technology with timeless design principles to create spaces that are not only beautiful but intelligent. Our dedicated team of architects and engineers ensure every project is executed to perfection.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="portfolio">
+    <section id="features">
         <div class="container">
-            <h2 class="section-title centered reveal tracking-wide"><span class="text-gradient">PRESTIGIOUS</span> PROJECTS</h2>
-            <div class="compact-portfolio">
-                <div class="project-thumb reveal">
-                    <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=800&auto=format&fit=crop" alt="Makkah Mall">
-                    <div class="thumb-overlay">
-                        <h3>Makkah Mall</h3>
-                        <p>Commercial Landmark</p>
-                    </div>
+            <div class="section-header reveal-up">
+                <h2 class="section-title">Core Expertise</h2>
+                <p class="section-desc">Delivering unparalleled quality across all dimensions of architecture and construction.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-pill reveal-up">
+                    <i class="fas fa-building"></i>
+                    <span>Architectural Design</span>
                 </div>
-                <div class="project-thumb reveal delay-1">
-                    <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop" alt="Parkview Villa">
-                    <div class="thumb-overlay">
-                        <h3>Parkview City</h3>
-                        <p>Residential Luxury</p>
-                    </div>
+                <div class="feature-pill reveal-up">
+                    <i class="fas fa-couch"></i>
+                    <span>Luxury Interior Design</span>
                 </div>
-                <div class="project-thumb reveal delay-2">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop" alt="DHA Residence">
-                    <div class="thumb-overlay">
-                        <h3>DHA Residential</h3>
-                        <p>Luxury Masterpiece</p>
-                    </div>
+                <div class="feature-pill reveal-up">
+                    <i class="fas fa-hard-hat"></i>
+                    <span>Premium Construction</span>
+                </div>
+                <div class="feature-pill reveal-up">
+                    <i class="fas fa-tools"></i>
+                    <span>High-End Renovation</span>
+                </div>
+                <div class="feature-pill reveal-up">
+                    <i class="fas fa-leaf"></i>
+                    <span>Landscape Architecture</span>
+                </div>
+                <div class="feature-pill reveal-up">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>Project Management</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact">
+    <section id="gallery">
         <div class="container">
-            <div class="footer-grid reveal">
-                <div class="footer-info">
-                    <div class="logo">
-                        <a href="#hero">
-                            <img src="https://i.postimg.cc/N5DprPvY/Arix-Company-Profile-4-1-page-0001-removebg-preview.png" alt="Atrix Design Logo" class="footer-logo">
-                        </a>
-                    </div>
-                    <p class="address-text"><i class="fas fa-map-marker-alt location-icon"></i> Building # 293, First Floor, CCA 2 Sector D, DHA Phase 6, Lahore</p>
+            <div class="section-header reveal-up">
+                <h2 class="section-title">Photo Gallery</h2>
+                <p class="section-desc">A glimpse into our prestigious residential and commercial projects.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal-up">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&auto=format&fit=crop" alt="Project 1">
                 </div>
-                <div class="footer-cta">
-                    <a href="tel:+923066097000" class="btn btn-call">
-                        <i class="fas fa-phone-alt"></i> CALL +92 306 6097000
-                    </a>
+                <div class="gallery-item reveal-up">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop" alt="Project 2">
+                </div>
+                <div class="gallery-item reveal-up">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=800&auto=format&fit=crop" alt="Project 3">
+                </div>
+                <div class="gallery-item reveal-up">
+                    <img src="https://images.unsplash.com/photo-1600566753086-00f18efc2291?q=80&w=800&auto=format&fit=crop" alt="Project 4">
+                </div>
+                <div class="gallery-item reveal-up">
+                    <img src="https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?q=80&w=800&auto=format&fit=crop" alt="Project 5">
+                </div>
+                <div class="gallery-item reveal-up">
+                    <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=800&auto=format&fit=crop" alt="Project 6">
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Atrix Design & Build Pvt. Ltd. All Rights Reserved.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            
+            <div class="faq-accordion reveal-up">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <h4>What services do you offer? <i class="fas fa-chevron-down"></i></h4>
+                    <p>We provide full-scale architectural design, interior designing, and end-to-end construction services.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How do I start a project with Atrix? <i class="fas fa-chevron-down"></i></h4>
+                    <p>You can get in touch with us via phone or our contact form to schedule an initial consultation where we discuss your vision and requirements.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do you handle commercial projects? <i class="fas fa-chevron-down"></i></h4>
+                    <p>Yes, we have an extensive portfolio of high-end commercial projects including plazas, malls, and corporate offices.</p>
+                </div>
+            </div>
+
+            <div class="contact-box reveal-up">
+                <h2 class="section-title" style="margin-bottom: 1rem;">Get In Touch</h2>
+                <p style="color: #666; margin-bottom: 2rem;">Schedule a consultation with our expert architects today.</p>
+                <a href="tel:+923066097000" class="btn btn-gold" style="padding: 1.2rem 3rem; font-size: 1rem;">
+                    <i class="fas fa-phone-alt" style="margin-right: 10px;"></i> Call +92 306 6097000
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <a href="#hero">
+                <img src="https://i.postimg.cc/N5DprPvY/Arix-Company-Profile-4-1-page-0001-removebg-preview.png" alt="Atrix Design Logo" class="footer-logo">
+            </a>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#features">Expertise</a>
+                <a href="#gallery">Portfolio</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p style="color: var(--gray); margin-bottom: 2rem;"><i class="fas fa-map-marker-alt" style="color: var(--gold); margin-right: 8px;"></i> Building # 293, First Floor, CCA 2 Sector D, DHA Phase 6, Lahore</p>
+            <div class="copyright">
+                &copy; 2026 Atrix Design & Build Pvt. Ltd. All Rights Reserved.
             </div>
         </div>
     </footer>
