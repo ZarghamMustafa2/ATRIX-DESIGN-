@@ -131,11 +131,13 @@ body {
 }
 
 .main-logo {
-    height: 45px;
+    height: 80px; /* Increased to account for image padding */
     width: auto;
     object-fit: contain;
     transition: var(--transition);
     image-rendering: -webkit-optimize-contrast;
+    mix-blend-mode: lighten; /* Removes the dark grey background from the image */
+    margin: -15px 0; /* Offset padding */
 }
 
 .main-logo:hover {
@@ -445,7 +447,7 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .main-logo { height: 40px; }
+    .main-logo { height: 70px; margin: -10px 0; }
     h1 { font-size: 2.8rem; }
     .sub-headline { font-size: 1.2rem; padding: 0 1rem; }
     .nav-links { display: none; }
