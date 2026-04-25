@@ -27,9 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // Mouse-Move Parallax for Background Geometric Elements
-    const bgElements = document.querySelector('.geometric-elements');
-    const shapes = document.querySelectorAll('.shape, .line-element');
+    // Mouse-Move Parallax for Ambient Orbs
+    const orbs = document.querySelectorAll('.ambient-orb');
 
     document.addEventListener('mousemove', (e) => {
         if (window.innerWidth < 768) return; // Disable parallax on mobile
@@ -40,14 +39,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const centerX = window.innerWidth / 2;
         const centerY = window.innerHeight / 2;
 
-        const moveX = (mouseX - centerX) / 50;
-        const moveY = (mouseY - centerY) / 50;
+        // More subtle movement for the large orbs
+        const moveX = (mouseX - centerX) / 80;
+        const moveY = (mouseY - centerY) / 80;
 
-        shapes.forEach((shape, index) => {
-            const depth = (index + 1) * 0.5;
+        orbs.forEach((orb, index) => {
+            const depth = (index + 1) * 0.8;
             const x = moveX * depth;
             const y = moveY * depth;
-            shape.style.transform = `translate(${x}px, ${y}px)`;
+            
+            // Note: We're adding to the translation, but CSS animations might override this if they don't use variables.
+            // Let's use CSS variables for parallax so they combine with the float animation.
+            orb.style.transform = `translate(${x}px, ${y}px)`;
         });
     });
 
