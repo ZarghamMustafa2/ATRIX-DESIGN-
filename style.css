@@ -271,6 +271,40 @@ section { padding: 120px 0; position: relative; z-index: 1; }
     transform: scale(1.08);
 }
 
+.project-overlay {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 100%;
+    padding: 2.5rem 2rem 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 60%, transparent 100%);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.gallery-item:hover .project-overlay {
+    bottom: 0;
+    opacity: 1;
+}
+
+.project-overlay h3 {
+    color: var(--white);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+
+.project-overlay p {
+    color: var(--gold);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 /* FAQ / Contact Section */
 .faq-accordion { max-width: 800px; margin: 0 auto 5rem; }
 .faq-item { 
