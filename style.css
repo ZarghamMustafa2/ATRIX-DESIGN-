@@ -98,6 +98,10 @@ body {
     cursor: pointer; z-index: 1001;
 }
 
+.mobile-nav-overlay {
+    display: none !important;
+}
+
 /* Hero Section */
 #hero { 
     height: 100vh; 
@@ -466,10 +470,38 @@ footer {
     
     .mobile-nav-overlay {
         position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0,0,0,0.95); z-index: 1000;
+        background: rgba(0,0,0,0.98); z-index: 1000;
         backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-        display: flex; flex-direction: column; justify-content: center; align-items: center;
+        display: flex !important; flex-direction: column; justify-content: center; align-items: center;
         opacity: 0; pointer-events: none; transition: opacity 0.4s;
     }
     .mobile-nav-overlay.active { opacity: 1; pointer-events: auto; }
+
+    .mobile-nav-links {
+        list-style: none;
+        text-align: center;
+        padding: 0;
+    }
+    .mobile-nav-links li {
+        margin: 2rem 0;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s ease;
+    }
+    .mobile-nav-links li.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .mobile-nav-links a {
+        color: var(--white);
+        text-decoration: none;
+        font-size: 2.5rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: var(--transition);
+    }
+    .mobile-nav-links a:hover {
+        color: var(--gold);
+    }
 }
