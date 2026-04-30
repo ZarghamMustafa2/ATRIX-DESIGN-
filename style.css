@@ -822,7 +822,7 @@ footer {
 
 #fab-whatsapp {
     position: fixed;
-    bottom: 100px;
+    bottom: 105px; /* Spaced away from fab-call */
     right: 30px;
     width: 60px;
     height: 60px;
@@ -838,11 +838,18 @@ footer {
     transition: var(--transition);
 }
 
-#fab-whatsapp:hover {
-    transform: scale(1.1);
-    background: #128c7e;
+@media (max-width: 768px) {
+    #fab-call { bottom: 20px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 1.2rem !important; }
+    #fab-whatsapp { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 1.5rem !important; }
+    
+    .nav-container .btn-gold { display: none; }
+    .logo-main { font-size: 1.4rem; }
+    .logo-sub { font-size: 0.6rem; }
+    
+    .estimator-result { margin-top: 2rem; border-color: var(--gold); background: rgba(250, 200, 21, 0.1); }
+    .result-value { font-size: 1.8rem; }
 }
 
-@media (max-width: 768px) {
-    #fab-whatsapp { bottom: 90px; right: 20px; width: 55px; height: 55px; font-size: 1.5rem; }
-}
+/* Modal Nav Fix */
+.form-nav { display: flex; gap: 1rem; margin-top: 2.5rem; }
+.form-nav .btn { flex: 1; padding: 1rem; font-size: 0.9rem; }

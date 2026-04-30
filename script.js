@@ -204,20 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
     });
 
-    nextBtn.addEventListener('click', () => {
-        if (currentStep < formSteps.length) {
-            currentStep++;
-            updateStep();
-        }
-    });
-
-    prevBtn.addEventListener('click', () => {
-        if (currentStep > 1) {
-            currentStep--;
-            updateStep();
-        }
-    });
-
     // Grid Selectors
     const selectors = document.querySelectorAll('.selector-item');
     selectors.forEach(item => {
@@ -228,15 +214,65 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    nextBtn.addEventListener('click', () => {
+        if (validateStep(currentStep)) {
+            currentStep++;
+            updateStep();
+            projectModal.querySelector('.modal-container').scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (currentStep > 1) {
+            currentStep--;
+            updateStep();
+            projectModal.querySelector('.modal-container').scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
+
+    function validateStep(step) {
+        const stepEl = document.querySelector(`.form-step[data-step="${step}"]`);
+        const inputs = stepEl.querySelectorAll('input[required], select[required]');
+        let valid = true;
+
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                input.style.borderColor = '#ff4d4d';
+                valid = false;
+            } else {
+                input.style.borderColor = '';
+            }
+        });
+
+        if (step === 2 && !document.querySelector('#projectTypeSelector .selected')) {
+            alert('Please select a project type');
+            valid = false;
+        }
+        if (step === 3 && !document.querySelector('#plotSizeSelector .selected')) {
+            alert('Please select plot dimensions');
+            valid = false;
+        }
+
+        return valid;
+    }
+
     // Form Submission
     document.getElementById('projectLeadForm').addEventListener('submit', (e) => {
         e.preventDefault();
-        alert('Thank you! Your project request has been sent. Our luxury consultants will contact you shortly.');
-        projectModal.classList.remove('active');
-        document.body.style.overflow = '';
-        e.target.reset();
-        currentStep = 1;
-        updateStep();
+        const btn = e.target.querySelector('button[type="submit"]');
+        btn.innerText = 'Sending...';
+        btn.disabled = true;
+
+        setTimeout(() => {
+            alert('Success! Your legacy project request has been received. Our luxury consultants will call you shortly.');
+            projectModal.classList.remove('active');
+            document.body.style.overflow = '';
+            e.target.reset();
+            currentStep = 1;
+            updateStep();
+            btn.innerText = 'Submit Project';
+            btn.disabled = false;
+        }, 1500);
     });
 
     // Cost Estimator Logic
