@@ -161,4 +161,112 @@ document.addEventListener('DOMContentLoaded', () => {
     if(mobileBtn) {
         mobileBtn.addEventListener('click', toggleMobileMenu);
     }
+
+    // Project Modal Logic
+    const projectModal = document.getElementById('projectModal');
+    const startProjectBtns = document.querySelectorAll('a[href="#project-form"]');
+    const closeModal = document.getElementById('closeModal');
+    const formSteps = document.querySelectorAll('.form-step');
+    const nextBtn = document.getElementById('nextStep');
+    const prevBtn = document.getElementById('prevStep');
+    const submitBtn = document.getElementById('submitForm');
+    const indicators = document.querySelectorAll('.indicator-dot');
+    let currentStep = 1;
+
+    const updateStep = () => {
+        formSteps.forEach(step => step.classList.remove('active'));
+        document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.add('active');
+        
+        indicators.forEach((ind, idx) => {
+            ind.classList.toggle('active', idx < currentStep);
+        });
+
+        prevBtn.style.display = currentStep === 1 ? 'none' : 'block';
+        if (currentStep === formSteps.length) {
+            nextBtn.style.display = 'none';
+            submitBtn.style.display = 'block';
+        } else {
+            nextBtn.style.display = 'block';
+            submitBtn.style.display = 'none';
+        }
+    };
+
+    startProjectBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            projectModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    closeModal.addEventListener('click', () => {
+        projectModal.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentStep < formSteps.length) {
+            currentStep++;
+            updateStep();
+        }
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (currentStep > 1) {
+            currentStep--;
+            updateStep();
+        }
+    });
+
+    // Grid Selectors
+    const selectors = document.querySelectorAll('.selector-item');
+    selectors.forEach(item => {
+        item.addEventListener('click', () => {
+            const parent = item.parentElement;
+            parent.querySelectorAll('.selector-item').forEach(s => s.classList.remove('selected'));
+            item.classList.add('selected');
+        });
+    });
+
+    // Form Submission
+    document.getElementById('projectLeadForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Thank you! Your project request has been sent. Our luxury consultants will contact you shortly.');
+        projectModal.classList.remove('active');
+        document.body.style.overflow = '';
+        e.target.reset();
+        currentStep = 1;
+        updateStep();
+    });
+
+    // Cost Estimator Logic
+    const estArea = document.getElementById('estArea');
+    const estTotal = document.getElementById('estTotal');
+    const qualitySelectors = document.querySelectorAll('#estQuality .selector-item');
+    const scopeSelectors = document.querySelectorAll('#estScope .selector-item');
+
+    const calculateCost = () => {
+        const area = parseFloat(estArea.value) || 0;
+        const selectedQuality = document.querySelector('#estQuality .selector-item.selected');
+        const selectedScope = document.querySelector('#estScope .selector-item.selected');
+        
+        if (!selectedQuality || !selectedScope) return;
+
+        const rate = parseFloat(selectedQuality.getAttribute('data-rate'));
+        const multiplier = parseFloat(selectedScope.getAttribute('data-multiplier'));
+        
+        const total = area * rate * multiplier;
+        estTotal.innerText = Math.round(total).toLocaleString();
+    };
+
+    if (estArea) {
+        estArea.addEventListener('input', calculateCost);
+        qualitySelectors.forEach(s => s.addEventListener('click', () => {
+            setTimeout(calculateCost, 10);
+        }));
+        scopeSelectors.forEach(s => s.addEventListener('click', () => {
+            setTimeout(calculateCost, 10);
+        }));
+        calculateCost(); // Initial calculation
+    }
 });
