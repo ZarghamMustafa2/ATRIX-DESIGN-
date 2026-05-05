@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atrix Design & Build | Luxury Architecture</title>
     <meta name="description" content="Atrix Design & Build Pvt. Ltd. - Advanced Architectural Design and Elite Construction Services.">
-    <link rel="stylesheet" href="style.css?v=15.0">
+    <link rel="stylesheet" href="style.css?v=16.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -289,7 +289,7 @@
         <div class="video-container reveal-up">
             <div class="video-overlay"></div>
             <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop" alt="Architecture Video" class="video-bg-img">
-            <div class="play-btn-wrapper">
+            <div class="play-btn-wrapper" id="btnPlayShowreel">
                 <div class="play-btn">
                     <i class="fas fa-play"></i>
                 </div>
@@ -555,7 +555,7 @@
                     <i class="fas fa-file-pdf" style="font-size: 4rem; color: var(--gold); margin-bottom: 1.5rem;"></i>
                     <h3 style="margin-bottom: 1rem;">Company Profile</h3>
                     <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 2rem;">Download our detailed portfolio & material specs.</p>
-                    <a href="#" class="btn btn-gold">Download Brochure <i class="fas fa-download" style="margin-left: 10px;"></i></a>
+                    <a href="#" class="btn btn-gold" id="btnDownloadBrochure">Download Brochure <i class="fas fa-download" style="margin-left: 10px;"></i></a>
                 </div>
             </div>
         </div>
@@ -567,8 +567,8 @@
             <h2 class="section-title reveal-up" style="font-size: 2.5rem;">Stay Inspired</h2>
             <p class="section-desc reveal-up" style="margin-bottom: 2rem;">Subscribe to our newsletter for the latest in luxury architecture and interior design trends.</p>
             <div class="newsletter-form reveal-up">
-                <input type="email" placeholder="Enter your email address" class="newsletter-input">
-                <button class="btn btn-gold newsletter-btn">Subscribe</button>
+                <input type="email" placeholder="Enter your email address" class="newsletter-input" id="newsletterInput">
+                <button class="btn btn-gold newsletter-btn" id="btnSubscribe">Subscribe</button>
             </div>
         </div>
     </section>
@@ -724,6 +724,6 @@
         </div>
     </div>
 
-    <script src="script.js?v=15.0"></script>
+    <script src="script.js?v=16.0"></script>
 </body>
 </html>

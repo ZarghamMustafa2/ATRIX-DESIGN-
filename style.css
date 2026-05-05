@@ -800,6 +800,33 @@ footer {
     align-items: center;
     gap: 5px;
 }
+
+@media (max-width: 768px) {
+    /* Mobile Responsive Overrides */
+    .about-card { padding: 2rem 1.5rem; }
+    .video-container { height: 350px; margin: 0 1rem; border-radius: 1rem; }
+    .play-btn { width: 60px; height: 60px; font-size: 1.5rem; }
+    
+    .estimator-box { padding: 1.5rem; gap: 2rem; }
+    .estimator-result { padding: 1.5rem; }
+    .result-value { font-size: 2rem; }
+    
+    .credentials-box { padding: 1.5rem !important; gap: 2rem !important; }
+    .credentials-text { min-width: 100% !important; }
+    .cert-logos { gap: 1rem !important; justify-content: space-between; }
+    .credentials-cta { padding: 1.5rem !important; }
+    
+    .contact-box { padding: 1.5rem; }
+    .faq-accordion { margin-bottom: 3rem; }
+    .faq-item { padding: 1.5rem 0; }
+    
+    .newsletter-form { flex-direction: column; }
+    .newsletter-input { width: 100%; text-align: center; }
+    .newsletter-btn { width: 100%; }
+    
+    .footer-links { flex-direction: column; gap: 1.5rem; }
+}
+
 /* Materials Showcase */
 .materials-grid {
     display: grid;

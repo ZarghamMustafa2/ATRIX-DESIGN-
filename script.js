@@ -305,4 +305,48 @@ document.addEventListener('DOMContentLoaded', () => {
         }));
         calculateCost(); // Initial calculation
     }
+
+    // Newsletter Subscription Logic
+    const btnSubscribe = document.getElementById('btnSubscribe');
+    const newsletterInput = document.getElementById('newsletterInput');
+    if (btnSubscribe && newsletterInput) {
+        btnSubscribe.addEventListener('click', () => {
+            const email = newsletterInput.value.trim();
+            if (email && email.includes('@')) {
+                btnSubscribe.innerText = 'Subscribed!';
+                btnSubscribe.style.backgroundColor = '#2ecc71';
+                btnSubscribe.style.color = '#fff';
+                newsletterInput.value = '';
+                setTimeout(() => {
+                    alert('Thank you for subscribing to Atrix Design & Build newsletter!');
+                    btnSubscribe.innerText = 'Subscribe';
+                    btnSubscribe.style.backgroundColor = '';
+                    btnSubscribe.style.color = '';
+                }, 500);
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        });
+    }
+
+    // Video Showreel Logic
+    const btnPlayShowreel = document.getElementById('btnPlayShowreel');
+    if (btnPlayShowreel) {
+        btnPlayShowreel.addEventListener('click', () => {
+            alert('Full Architectural Showreel is currently being rendered and will be available soon.');
+        });
+    }
+
+    // Download Brochure Logic
+    const btnDownloadBrochure = document.getElementById('btnDownloadBrochure');
+    if (btnDownloadBrochure) {
+        btnDownloadBrochure.addEventListener('click', (e) => {
+            e.preventDefault();
+            btnDownloadBrochure.innerHTML = 'Downloading... <i class="fas fa-spinner fa-spin" style="margin-left: 10px;"></i>';
+            setTimeout(() => {
+                alert('Company Profile PDF download initiated.');
+                btnDownloadBrochure.innerHTML = 'Download Brochure <i class="fas fa-download" style="margin-left: 10px;"></i>';
+            }, 1500);
+        });
+    }
 });
