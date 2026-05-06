@@ -35,7 +35,7 @@ body {
 /* Navbar */
 #navbar {
     position: fixed;
-    top: 0; width: 100%; z-index: 1000; padding: 1.5rem 0;
+    top: 0; width: 100%; z-index: 1050; padding: 1.5rem 0;
     background: transparent;
     transition: background 0.4s ease, padding 0.4s ease, backdrop-filter 0.4s ease;
 }
