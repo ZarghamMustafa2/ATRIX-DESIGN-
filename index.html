@@ -621,6 +621,10 @@
             </div>
 
             <form id="projectLeadForm">
+                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+                <input type="hidden" name="subject" value="New Project Lead - Atrix Design & Build">
+                <input type="hidden" name="from_name" value="Atrix Website">
+
                 <!-- Step 1: Personal Info -->
                 <div class="form-step active" data-step="1">
                     <h2 class="section-title" style="font-size: 2rem; text-align: left;">Let's Build Your <span class="text-gold">Legacy</span></h2>
@@ -629,15 +633,15 @@
                     <div class="form-grid">
                         <div class="form-group">
                             <label class="form-label">Full Name</label>
-                            <input type="text" class="form-input" placeholder="e.g. Ahmad Hassan" required>
+                            <input type="text" name="Full_Name" class="form-input" placeholder="e.g. Ahmad Hassan" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Phone Number</label>
-                            <input type="tel" class="form-input" placeholder="+92 3XX XXXXXXX" required>
+                            <input type="tel" name="Phone" class="form-input" placeholder="+92 3XX XXXXXXX" required>
                         </div>
                         <div class="form-group full">
                             <label class="form-label">City</label>
-                            <input type="text" class="form-input" placeholder="e.g. Lahore, Multan, Islamabad" required>
+                            <input type="text" name="City" class="form-input" placeholder="e.g. Lahore, Multan, Islamabad" required>
                         </div>
                     </div>
                 </div>
@@ -689,25 +693,26 @@
                     <div class="form-grid">
                         <div class="form-group">
                             <label class="form-label">Estimated Budget (PKR)</label>
-                            <select class="form-select">
-                                <option>Select Range</option>
-                                <option>5M - 10M</option>
-                                <option>10M - 20M</option>
-                                <option>20M - 50M</option>
-                                <option>50M+</option>
+                            <select name="Estimated_Budget" class="form-select">
+                                <option value="">Select Range</option>
+                                <option value="5M - 10M">5M - 10M</option>
+                                <option value="10M - 20M">10M - 20M</option>
+                                <option value="20M - 50M">20M - 50M</option>
+                                <option value="50M+">50M+</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Expected Timeline</label>
-                            <select class="form-select">
-                                <option>Immediate</option>
-                                <option>Within 3 Months</option>
-                                <option>Planning Phase</option>
+                            <select name="Expected_Timeline" class="form-select">
+                                <option value="">Select Timeline</option>
+                                <option value="Immediate">Immediate</option>
+                                <option value="Within 3 Months">Within 3 Months</option>
+                                <option value="Planning Phase">Planning Phase</option>
                             </select>
                         </div>
                         <div class="form-group full">
                             <label class="form-label">Additional Requirements</label>
-                            <textarea class="form-textarea" rows="3" placeholder="Tell us more about your dream project..."></textarea>
+                            <textarea name="Additional_Requirements" class="form-textarea" rows="3" placeholder="Tell us more about your dream project..."></textarea>
                         </div>
                     </div>
                 </div>
@@ -721,6 +726,6 @@
         </div>
     </div>
 
-    <script src="script.js?v=19.0"></script>
+    <script src="script.js?v=21.0"></script>
 </body>
 </html>

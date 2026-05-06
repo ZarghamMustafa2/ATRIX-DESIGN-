@@ -265,22 +265,56 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Form Submission
-    document.getElementById('projectLeadForm').addEventListener('submit', (e) => {
+    document.getElementById('projectLeadForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        const btn = e.target.querySelector('button[type="submit"]');
+        const form = e.target;
+        const btn = form.querySelector('button[type="submit"]');
         btn.innerText = 'Sending...';
         btn.disabled = true;
 
-        setTimeout(() => {
-            alert('Success! Your legacy project request has been received. Our luxury consultants will call you shortly.');
-            projectModal.classList.remove('active');
-            document.body.style.overflow = '';
-            e.target.reset();
-            currentStep = 1;
-            updateStep();
+        const formData = new FormData(form);
+        
+        // Verify Access Key is provided
+        if (formData.get('access_key') === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+            alert('Setup Required: Please add your Web3Forms Access Key in index.html to enable form submissions.');
             btn.innerText = 'Submit Project';
             btn.disabled = false;
-        }, 1500);
+            return;
+        }
+
+        // Add custom grid selector values
+        const selectedProject = document.querySelector('#projectTypeSelector .selected span');
+        if(selectedProject) formData.append('Project_Type', selectedProject.innerText);
+        
+        const selectedPlot = document.querySelector('#plotSizeSelector .selected span');
+        if(selectedPlot) formData.append('Plot_Size', selectedPlot.innerText);
+
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+            
+            if (data.success) {
+                alert('Success! Your legacy project request has been received. Our luxury consultants will call you shortly.');
+                projectModal.classList.remove('active');
+                document.body.style.overflow = '';
+                form.reset();
+                currentStep = 1;
+                updateStep();
+                
+                // Clear selected items in grid
+                document.querySelectorAll('.selector-item.selected').forEach(el => el.classList.remove('selected'));
+            } else {
+                alert('Something went wrong. Please check your Web3Forms Access Key or try again later.');
+            }
+        } catch (error) {
+            alert('Network error. Please try again.');
+        } finally {
+            btn.innerText = 'Submit Project';
+            btn.disabled = false;
+        }
     });
 
     // Cost Estimator Logic
