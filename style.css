@@ -98,8 +98,25 @@ body {
     cursor: pointer; z-index: 1001;
 }
 
+.mobile-menu-dimmer {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
+    z-index: 2000; opacity: 0; visibility: hidden; transition: var(--transition);
+}
+.mobile-menu-dimmer.active { opacity: 1; visibility: visible; }
+
 .mobile-nav-overlay {
-    display: none !important;
+    position: fixed; top: 0; left: 0; width: 300px; height: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 2001; transform: translateX(-100%); transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    padding: 80px 40px; display: flex; flex-direction: column;
+}
+.mobile-nav-overlay.active { transform: translateX(0); }
+
+.mobile-close-btn {
+    position: absolute; top: 2rem; right: 2rem; background: none; border: none;
+    color: var(--white); font-size: 1.5rem; cursor: pointer;
 }
 
 /* Hero Section */
@@ -477,50 +494,72 @@ footer {
     .nav-links { display: none; }
     .mobile-menu-toggle { display: block; }
     #fab-call { display: flex; }
-    .features-grid { grid-template-columns: 1fr; }
-    
+    .mobile-menu-dimmer {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.6); z-index: 1999;
+        display: none; opacity: 0; transition: opacity 0.4s ease;
+        backdrop-filter: blur(5px);
+    }
+    .mobile-menu-dimmer.active { display: block; opacity: 1; }
+
     .mobile-nav-overlay {
-        position: fixed; top: 0; right: 0; width: 75%; height: 100%;
-        background: rgba(0,0,0,0.98); z-index: 2000;
-        backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-        display: flex !important; flex-direction: column; justify-content: center; align-items: center;
+        position: fixed; top: 0; right: 0; width: 80%; height: 100%;
+        background: rgba(10, 10, 10, 0.96); z-index: 2000;
+        backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+        display: flex !important; flex-direction: column; justify-content: center; align-items: flex-start;
+        padding: 0 15%;
         opacity: 0; pointer-events: none; 
         transform: translateX(100%);
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
-        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        border-left: 2px solid var(--gold);
+        box-shadow: -20px 0 60px rgba(0,0,0,0.9);
     }
     .mobile-nav-overlay.active { 
         opacity: 1; pointer-events: auto; 
         transform: translateX(0);
     }
 
+    .mobile-close-btn {
+        position: absolute; top: 2rem; right: 2rem; 
+        background: rgba(243, 146, 0, 0.1); border: 1px solid rgba(243, 146, 0, 0.3);
+        color: var(--gold); font-size: 1.8rem; width: 50px; height: 50px;
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        cursor: pointer; z-index: 2001; transition: all 0.3s ease;
+    }
+    .mobile-close-btn:hover { background: var(--gold); color: #000; transform: rotate(90deg); }
+
     .mobile-nav-links {
         list-style: none;
-        text-align: center;
+        text-align: left;
         padding: 0;
+        width: 100%;
     }
     .mobile-nav-links li {
-        margin: 1.2rem 0;
+        margin: 1.5rem 0;
         opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.4s ease;
+        transform: translateX(30px);
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .mobile-nav-links li.active {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
     }
     .mobile-nav-links a {
         color: var(--white);
         text-decoration: none;
-        font-size: 1.6rem;
-        font-weight: 700;
-        letter-spacing: 1.5px;
+        font-size: 1.8rem;
+        font-weight: 600;
+        letter-spacing: 1px;
         text-transform: uppercase;
-        transition: var(--transition);
+        position: relative;
+        display: inline-block;
     }
-    .mobile-nav-links a:hover {
-        color: var(--gold);
+    .mobile-nav-links a::after {
+        content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
+        background: var(--gold); transition: width 0.3s ease;
     }
+    .mobile-nav-links a:hover { color: var(--gold); }
+    .mobile-nav-links a:hover::after { width: 100%; }
 }
 /* Project Modal (Lead Gen) - Luxury Overhaul */
 .modal-overlay {

@@ -107,10 +107,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile Menu Logic
     const mobileBtn = document.querySelector('.mobile-menu-toggle');
     const mobileCloseBtn = document.querySelector('.mobile-close-btn');
+    const menuDimmer = document.getElementById('menuDimmer');
     const mobileLinks = document.querySelectorAll('.mobile-nav-links li');
 
     const toggleMobileMenu = () => {
         mobileNav.classList.toggle('active');
+        menuDimmer.classList.toggle('active');
         const isOpen = mobileNav.classList.contains('active');
         
         // Hide the original hamburger menu when overlay is open, so only the orange X shows
@@ -168,6 +170,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if(mobileCloseBtn) {
         mobileCloseBtn.addEventListener('click', toggleMobileMenu);
+    }
+    if(menuDimmer) {
+        menuDimmer.addEventListener('click', toggleMobileMenu);
     }
 
     // Project Modal Logic
