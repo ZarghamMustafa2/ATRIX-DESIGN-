@@ -106,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile Menu Logic
     const mobileBtn = document.querySelector('.mobile-menu-toggle');
+    const mobileCloseBtn = document.querySelector('.mobile-close-btn');
     const mobileLinks = document.querySelectorAll('.mobile-nav-links li');
 
     const toggleMobileMenu = () => {
@@ -160,6 +161,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if(mobileBtn) {
         mobileBtn.addEventListener('click', toggleMobileMenu);
+    }
+    if(mobileCloseBtn) {
+        mobileCloseBtn.addEventListener('click', toggleMobileMenu);
     }
 
     // Project Modal Logic
