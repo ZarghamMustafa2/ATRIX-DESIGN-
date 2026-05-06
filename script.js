@@ -112,7 +112,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleMobileMenu = () => {
         mobileNav.classList.toggle('active');
         const isOpen = mobileNav.classList.contains('active');
-        mobileBtn.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        
+        // Hide the original hamburger menu when overlay is open, so only the orange X shows
+        mobileBtn.style.opacity = isOpen ? '0' : '1';
+        mobileBtn.style.pointerEvents = isOpen ? 'none' : 'auto';
+        
         document.body.style.overflow = isOpen ? 'hidden' : '';
 
         if (isOpen) {
