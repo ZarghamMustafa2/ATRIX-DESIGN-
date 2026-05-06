@@ -274,14 +274,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formData = new FormData(form);
         
-        // Verify Access Key is provided
-        if (formData.get('access_key') === 'YOUR_WEB3FORMS_ACCESS_KEY') {
-            alert('Setup Required: Please add your Web3Forms Access Key in index.html to enable form submissions.');
-            btn.innerText = 'Submit Project';
-            btn.disabled = false;
-            return;
-        }
-
         // Add custom grid selector values
         const selectedProject = document.querySelector('#projectTypeSelector .selected span');
         if(selectedProject) formData.append('Project_Type', selectedProject.innerText);
