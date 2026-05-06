@@ -235,10 +235,10 @@ h1 .text-gold {
 }
 
 /* Sections Global */
-section { padding: 120px 0; position: relative; z-index: 1; }
-.section-header { text-align: center; margin-bottom: 5rem; }
+section { padding: 80px 0; position: relative; z-index: 1; }
+.section-header { text-align: center; margin-bottom: 3.5rem; }
 .section-title { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; letter-spacing: -0.5px; }
-.section-desc { color: var(--gray); font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.8; }
+.section-desc { color: var(--gray); font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.6; }
 
 /* Glassmorphism Cards */
 .glass-card {
@@ -485,7 +485,8 @@ footer {
 @media (max-width: 768px) {
     .text-logo { font-size: 1.8rem; }
     .logo-sub { font-size: 0.55rem; letter-spacing: 1px; }
-    #hero { padding-top: 80px; text-align: center; justify-content: center; }
+    #hero { padding-top: 60px; text-align: center; justify-content: center; }
+    section { padding: 60px 0; }
     .hero-container { text-align: center; }
     .hero-overlay { background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.9) 100%); }
     .subtitle { justify-content: center; }
