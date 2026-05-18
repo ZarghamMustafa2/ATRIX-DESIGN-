@@ -14,12 +14,16 @@
     box-sizing: border-box;
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     background-color: var(--bg-black);
     color: var(--white);
     font-family: var(--font-main);
     line-height: 1.6;
-    overflow-x: hidden;
     position: relative;
     /* Subtle background grid/noise for luxury tech feel */
     background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
@@ -52,6 +56,51 @@ body {
 .navbar-content { display: flex; justify-content: space-between; align-items: center; }
 
 .logo { display: flex; align-items: center; }
+
+/* Brand Logo Sizing & Responsive Styling */
+#navbar .img-logo img {
+    height: 100px;
+    width: auto;
+    display: block;
+    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#navbar.scrolled .img-logo img {
+    height: 75px;
+}
+
+.mobile-menu-header img {
+    height: 50px;
+    width: auto;
+    transition: height 0.4s ease;
+}
+
+footer .img-logo img {
+    height: 120px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s ease, height 0.4s ease;
+}
+
+footer .img-logo:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    #navbar .img-logo img {
+        height: 75px;
+    }
+    #navbar.scrolled .img-logo img {
+        height: 60px;
+    }
+    .mobile-menu-header img {
+        height: 45px;
+    }
+    footer .img-logo img {
+        height: 100px;
+    }
+}
 .text-logo {
     text-decoration: none;
     display: flex;
@@ -480,19 +529,8 @@ footer {
 @media (max-width: 992px) {
     h1 { font-size: 3.5rem; }
     .about-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 768px) {
-    .text-logo { font-size: 1.8rem; }
-    .logo-sub { font-size: 0.55rem; letter-spacing: 1px; }
-    #hero { padding-top: 40px; text-align: center; justify-content: center; }
-    section { padding: 40px 0; }
-    .hero-container { text-align: center; }
-    .hero-overlay { background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.9) 100%); }
-    .subtitle { justify-content: center; }
-    .subtitle::before { display: none; }
-    h1 { font-size: 3rem; }
     .nav-links { display: none; }
+    .nav-cta { display: none; }
     .mobile-menu-toggle { display: block; }
     #fab-call { display: flex; }
     .mobile-menu-dimmer {
@@ -575,6 +613,18 @@ footer {
         border-bottom: 1px solid #111;
     }
 }
+
+@media (max-width: 768px) {
+    .text-logo { font-size: 1.8rem; }
+    .logo-sub { font-size: 0.55rem; letter-spacing: 1px; }
+    #hero { padding-top: 40px; text-align: center; justify-content: center; }
+    section { padding: 40px 0; }
+    .hero-container { text-align: center; }
+    .hero-overlay { background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.9) 100%); }
+    .subtitle { justify-content: center; }
+    .subtitle::before { display: none; }
+    h1 { font-size: 3rem; }
+
 /* Project Modal (Lead Gen) - Luxury Overhaul */
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
