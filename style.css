@@ -205,16 +205,6 @@ footer .img-logo:hover img {
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-.subtitle::before {
-    content: '';
-    display: inline-block;
-    width: 30px;
-    height: 2px;
-    background: var(--gold);
 }
 
 h1 { 
@@ -617,8 +607,6 @@ footer {
     section { padding: 40px 0; }
     .hero-container { text-align: center; }
     .hero-overlay { background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.9) 100%); }
-    .subtitle { justify-content: center; }
-    .subtitle::before { display: none; }
     h1 { font-size: 3rem; }
 }
 
