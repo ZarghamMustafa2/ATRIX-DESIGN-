@@ -624,6 +624,7 @@ footer {
     .subtitle { justify-content: center; }
     .subtitle::before { display: none; }
     h1 { font-size: 3rem; }
+}
 
 /* Project Modal (Lead Gen) - Luxury Overhaul */
 .modal-overlay {
