@@ -59,24 +59,24 @@ body {
 
 /* Brand Logo Sizing & Responsive Styling */
 #navbar .img-logo img {
-    height: 65px;
+    height: 105px;
     width: auto;
     display: block;
     transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #navbar.scrolled .img-logo img {
-    height: 50px;
+    height: 70px;
 }
 
 .mobile-menu-header img {
-    height: 38px;
+    height: 65px;
     width: auto;
     transition: height 0.4s ease;
 }
 
 footer .img-logo img {
-    height: 85px;
+    height: 140px;
     width: auto;
     display: block;
     margin: 0 auto;
@@ -89,16 +89,16 @@ footer .img-logo:hover img {
 
 @media (max-width: 768px) {
     #navbar .img-logo img {
-        height: 50px;
+        height: 75px;
     }
     #navbar.scrolled .img-logo img {
-        height: 42px;
+        height: 55px;
     }
     .mobile-menu-header img {
-        height: 32px;
+        height: 52px;
     }
     footer .img-logo img {
-        height: 70px;
+        height: 105px;
     }
 }
 .text-logo {
